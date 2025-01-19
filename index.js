@@ -3,6 +3,7 @@ const dotenv = require("dotenv").config();
 const db_connection = require("./config/db");
 const errorHandler = require("./middlewares/errorHandler");
 const userRoutes = require('./routes/user');
+const taskRoutes = require("./routes/task");
 
 const PORT = process.env.PORT || 3001
 
@@ -13,6 +14,9 @@ app.use(express.json());
 
 // user routes
 app.use('/user', userRoutes);
+
+// task routes
+app.use('/task', taskRoutes)
 
 // Global error handling middleware
 app.use(errorHandler)

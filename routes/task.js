@@ -1,8 +1,9 @@
 const express = require('express');
-const register = require('../controllers/user')
+const {addTask} = require('../controllers/task');
+const verifyToken = require('../middlewares/verifyToken');
 
 const taskRoutes = express.Router();
 
-taskRoutes.post('/task', register);
+taskRoutes.post('/addTask', verifyToken, addTask);
 
-module.exports = userRoutes;
+module.exports = taskRoutes;
