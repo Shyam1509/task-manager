@@ -1,3 +1,4 @@
+const verifyToken = require("../middlewares/verifyToken")
 
 const authorizeRole = (allowedRole) => {
 
