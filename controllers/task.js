@@ -11,11 +11,9 @@ const addTask = async (req, res, next) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    if (!req.user || !req.user._id) {
+    if (!req.user || !req.user.id) {
         return res.status(400).json({ message: "User is not authenticated" });
       }
-
-      console.log(req.user);
       
     const newTask = await Task.create({
       title,
@@ -24,7 +22,7 @@ const addTask = async (req, res, next) => {
       priority,
       assignedTo,
       dueDate,
-      createdBy: req.user._id
+      createdBy: req.user.id
     });
 
     const savedTask = await newTask.save();
